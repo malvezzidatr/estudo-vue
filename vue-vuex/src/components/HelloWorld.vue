@@ -14,7 +14,7 @@ export default defineComponent({
   name: "HelloWorld",
   setup() {
     const store = useStore();
-    const counter = computed(() => store.state.count);
+    const counter = computed(() => store.getters.count);
     const increments = () => store.dispatch("increments");
     const decrements = () => store.dispatch("decrements");
     return {
