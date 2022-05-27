@@ -1,20 +1,20 @@
 <template>
   <div class="helloworld">
-    <h1 class="counter">count : {{ counter }}</h1>
+    <h1 class="counter">{{ counter }}</h1>
     <button class="increment" @click="increments">Aumentar o contador</button>
-    <button class="decrement" @click="decrements">diminuir o contador</button>
+    <!-- <button class="decrement" @click="decrements">diminuir o contador</button> -->
   </div>
 </template>
 
-<script>
-import { computed, defineComponent } from "vue";
+<script lang="ts">
+import { computed, ComputedRef, defineComponent } from "vue";
 import { useStore } from "@/store";
 
 export default defineComponent({
   name: "HelloWorld",
   setup() {
     const store = useStore();
-    const counter = computed(() => store.getters.count);
+    const counter: ComputedRef<number> = computed(() => store.getters.count);
     const increments = () => store.dispatch("increments");
     const decrements = () => store.dispatch("decrements");
     return {
