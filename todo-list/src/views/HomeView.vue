@@ -1,16 +1,15 @@
 <template>
 	<div class="homeContainer">
 		<div>
-			<InputTodo @getNewValue = "newValue" text="Digite sua tarefa"/>
-			<TodoButton newValue= text="Enviar" />
-			<p>{{ newValue }}</p>
+			<InputTodo @getNewValue = "getNewValue" text="Digite sua tarefa"/>
+			<TodoButton @addTask="addTask(newValue)" :newValue='newValue' text="Enviar" />
 		</div>
 		<TodoList tasks="" />
 	</div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 import { useTaskStore } from '../store/tasks';
 import InputTodo from '@/components/InputTodo.vue';
 import TodoButton from '@/components/TodoButton.vue';
@@ -27,9 +26,9 @@ export default defineComponent({
 		const store = useTaskStore();
 		const allTasks = store.allTasks;
 		const addTask = store.addTask;
-		let newValue = '';
+		let newValue = ref('');
 		const getNewValue = (value: string) => {
-			newValue = value;
+			newValue.value = value;
 		}
 
 		return {

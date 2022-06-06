@@ -1,9 +1,10 @@
 <template>
-	<button class="todoButton">{{ text }}</button>
+	<button @click="addTask" class="todoButton">{{ text }}</button>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { useTaskStore } from '../store/tasks';
 
 export default defineComponent({
 	name: 'TodoButton',
@@ -11,12 +12,21 @@ export default defineComponent({
 		text: {
 			type: String,
 			required: true
+		},
+		newValue: {
+			type: String,
+			required: false
 		}
 	},
-	emits: ['addTask', 'task'],
+	emits: ['addTask'],
 	setup(props, { emit }) {
-		const addTask = () => emit('addTask')
-		console.log(addTask)
+		const store = useTaskStore();
+		const addTask = () => {
+			emit('addTask')
+		}
+		return {
+			addTask
+		}
 	}
 });
 </script>
