@@ -10,8 +10,8 @@
 			</p>
 			<p class="todo__list-todo--task">{{ item.task }}</p>
 			<div class="todo__list-todo--done">
-				<button @click="doneTask(index)">Concluido</button>
-				<button @click="cancelTask(index)">Cancelar</button>
+				<button :disabled="item.isFinished" @click="doneTask(index)">Concluido</button>
+				<button :disabled="item.isFinished" @click="cancelTask(index)">Cancelar</button>
 			</div>
 		</div>
 	</div>
@@ -74,6 +74,8 @@ export default defineComponent({
 				display: flex;
 				align-items: center;
 				justify-content: center;
+				font-weight: bold;
+				font-size: 18px;
 			}
 
 			&--status {
@@ -97,6 +99,16 @@ export default defineComponent({
 					height: 50px;
 					margin: 10px;
 					cursor: pointer;
+					border: unset;
+					border-radius: 10px;
+				}
+
+				button:disabled {
+					border: unset !important;
+				}
+
+				button:hover {
+					border: 1px solid black;
 				}
 			}
 		}

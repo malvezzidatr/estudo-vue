@@ -1,6 +1,7 @@
 <template>
     <input
         @change="newValueEmit($event.target.value)"
+        v-on:blur="$event.target.value = ''"
         class="task"
         type="Text"
         :placeholder="text"
@@ -25,7 +26,7 @@ export default defineComponent({
         }
 
         return {
-            newValueEmit
+            newValueEmit,
         }
     }
 });
