@@ -4,7 +4,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { useTaskStore } from '../store/tasks';
 
 export default defineComponent({
 	name: 'TodoButton',
@@ -20,8 +19,7 @@ export default defineComponent({
 	},
 	emits: ['addTask'],
 	setup(props, { emit }) {
-		const store = useTaskStore();
-		const addTask = () => {
+		const addTask = (): void => {
 			emit('addTask')
 		}
 		return {

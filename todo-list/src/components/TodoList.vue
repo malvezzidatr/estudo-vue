@@ -1,11 +1,17 @@
 <template>
 	<div class="todo__list">
-		<div class="todo__list-todo">
-			<p class="todo__list-todo--status">Inicializada</p>
-			<p class="todo__list-todo--task">Task em si</p>
+		<div
+			:class="{ 'todo__list-todo--progress': !item.isFinished, 'todo__list-todo--finished': item.isFinished }"
+			:key="index" v-for="(item, index) in allTasks"
+			class="todo__list-todo"
+		>
+			<p class="todo__list-todo--status" >
+				{{ item.isFinished ? 'Concluido' : 'Em progresso' }}
+			</p>
+			<p class="todo__list-todo--task">{{ item.task }}</p>
 			<div class="todo__list-todo--done">
-				<button>Concluido</button>
-				<button>Cancelar</button>
+				<button @click="doneTask(index)">Concluido</button>
+				<button @click="cancelTask(index)">Cancelar</button>
 			</div>
 		</div>
 	</div>
@@ -13,9 +19,29 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { useTaskStore } from '@/store/tasks';
 
 export default defineComponent({
 	name: 'TodoList',
+	setup() {
+		const store = useTaskStore();
+		const allTasks = store.allTasks;
+
+		const doneTask = (taskIndex: number): void => {
+			console.log(store)
+			store.doneTask(taskIndex);
+		}
+
+		const cancelTask = (taskIndex: number): void => {
+			store.cancelTask(taskIndex);
+		}
+
+		return {
+			allTasks,
+			doneTask,
+			cancelTask
+		}
+	}
 });
 </script>
 
@@ -33,9 +59,16 @@ export default defineComponent({
 			width: 100%;
 			height: 180px;
 			background-color: #fafafa;
-			border-top-left-radius: 8px;
-			border-top-right-radius: 8px;
-			border-bottom: 2px solid #bcbcbc;
+			border-radius: 8px;
+			margin-bottom: 10px;
+
+			&--progress {
+				background-color: #1fa0ff;
+			}
+
+			&--finished {
+				background-color: #7dcf00;
+			}
 
 			&--status, &--task, &--done {
 				display: flex;

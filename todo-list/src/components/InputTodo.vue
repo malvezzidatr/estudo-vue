@@ -1,5 +1,10 @@
 <template>
-  <input @change="newValueEmit($event.target.value)" class="task" type="Text" :placeholder="text" />
+    <input
+        @change="newValueEmit($event.target.value)"
+        class="task"
+        type="Text"
+        :placeholder="text"
+    />
 </template>
 
 <script lang="ts">
@@ -15,9 +20,10 @@ export default defineComponent({
     },
     emits: ['getNewValue'],
     setup(props, { emit }) {
-        const newValueEmit = (value: string) => {
+        const newValueEmit = (value: string): void => {
             emit('getNewValue', value);
         }
+
         return {
             newValueEmit
         }
@@ -26,14 +32,14 @@ export default defineComponent({
 </script>
 
 <style scoped lang="less">
-  .task {
-    width: 600px;
-    height: 50px;
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-    outline: 0;
-    border: 2px solid #bcbcbc;
-    font-size: 18px;
-    color: #101010;
-  }
+    .task {
+        width: 600px;
+        height: 50px;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+        outline: 0;
+        border: 2px solid #bcbcbc;
+        font-size: 18px;
+        color: #101010;
+    }
 </style>
