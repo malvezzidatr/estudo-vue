@@ -21,8 +21,10 @@ export default defineComponent({
     },
     emits: ['getNewValue'],
     setup(props, { emit }) {
-        const newValueEmit = (value: string): void => {
-            emit('getNewValue', value);
+        const newValueEmit = (value: string):void => {
+            if (value) {
+                emit('getNewValue', value);
+            } 
         }
 
         return {
