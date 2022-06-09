@@ -12,16 +12,13 @@ export default defineComponent({
 			type: String,
 			required: true
 		},
-		newValue: {
-			type: String,
-			required: false
-		}
 	},
 	emits: ['addTask'],
 	setup(props, { emit }) {
 		const addTask = (): void => {
 			emit('addTask')
 		}
+
 		return {
 			addTask
 		}

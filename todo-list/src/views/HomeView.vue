@@ -2,7 +2,7 @@
 	<div class="homeContainer">
 		<div>
 			<InputTodo @getNewValue = "getNewValue" text="Digite sua tarefa"/>
-			<TodoButton @addTask="addTask(newValue)" :newValue='newValue' text="Enviar" />
+			<TodoButton @addTask="addTask(newValue)" text="Enviar" />
 		</div>
 		<TodoList tasks="" />
 	</div>

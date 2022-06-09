@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1654797681748" clover="3.2.0">
-  <project timestamp="1654797681748" name="All files">
-    <metrics statements="7" coveredstatements="7" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2" elements="10" coveredelements="10" complexity="0" loc="7" ncloc="7" packages="1" files="1" classes="1"/>
+<coverage generated="1654799340992" clover="3.2.0">
+  <project timestamp="1654799340992" name="All files">
+    <metrics statements="13" coveredstatements="13" conditionals="1" coveredconditionals="1" methods="4" coveredmethods="4" elements="18" coveredelements="18" complexity="0" loc="13" ncloc="13" packages="1" files="2" classes="2"/>
     <file name="InputTodo.vue" path="C:\Users\caiom\Desktop\estudo-vue\todo-list\src\components\InputTodo.vue">
       <metrics statements="7" coveredstatements="7" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
       <line num="12" count="1" type="stmt"/>
@@ -11,6 +11,15 @@
       <line num="25" count="1" type="cond" truecount="1" falsecount="0"/>
       <line num="26" count="1" type="stmt"/>
       <line num="30" count="1" type="stmt"/>
+    </file>
+    <file name="TodoButton.vue" path="C:\Users\caiom\Desktop\estudo-vue\todo-list\src\components\TodoButton.vue">
+      <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <line num="6" count="1" type="stmt"/>
+      <line num="8" count="1" type="stmt"/>
+      <line num="17" count="1" type="stmt"/>
+      <line num="18" count="1" type="stmt"/>
+      <line num="19" count="1" type="stmt"/>
+      <line num="22" count="1" type="stmt"/>
     </file>
   </project>
 </coverage>

@@ -3,13 +3,15 @@ import InputTodo from "@/components/InputTodo.vue";
 
 describe('InputTodo', () => {
     const text = 'Digite sua tarefa';
+
+    const wrapper = shallowMount(InputTodo, {
+        props: {text}
+    });
+
     const mockNewValue = jest.fn((value:string) => {
         if(value) {
             wrapper.vm.$emit('getNewValue', value)
         }
-    });
-    const wrapper = shallowMount(InputTodo, {
-        props: {text}
     });
 
     it('After render check if exists input', () => {
@@ -20,12 +22,12 @@ describe('InputTodo', () => {
         expect(wrapper.find('.task').attributes('placeholder')).toMatch(text);
     });
 
-    it('teste function', () => {
+    it('Check is emmited after emit', () => {
         mockNewValue('New task');
         expect(wrapper.emitted().getNewValue).toBeTruthy();
     });
 
-    it('teste', () => {
+    it('Check function emit is working', () => {
         expect(wrapper.vm.newValueEmit('New task')).toBeUndefined();
     });
 });
