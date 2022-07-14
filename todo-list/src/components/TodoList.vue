@@ -28,7 +28,6 @@ export default defineComponent({
 		const allTasks = store.allTasks;
 
 		const doneTask = (taskIndex: number): void => {
-			console.log(store)
 			store.doneTask(taskIndex);
 		}
 
